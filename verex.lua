@@ -17,10 +17,10 @@ function mod:match(str)
   for i = 1, #self do
     from = self[i][1](str, from, self[i])
     if from == nil then
-      return false
+      return
     end
   end
-  return true
+  return from
 end
 
 
