@@ -29,8 +29,8 @@ function mod:find(str)
   return self
 end
 
-function mod:findPattern(str)
-  self:add(aux.findPattern, str)
+function mod:find_pattern(str)
+  self:add(aux.find_pattern, str)
   return self
 end
 
@@ -39,8 +39,8 @@ function mod:maybe(str)
   return self
 end
 
-function mod:maybePattern(str)
-  self:add(aux.maybePattern, str)
+function mod:maybe_pattern(str)
+  self:add(aux.maybe_pattern, str)
   return self
 end
 
@@ -53,7 +53,7 @@ function aux.find(str, from, pattern)
   return nil
 end
 
-function aux.findPattern(str, from, pattern)
+function aux.find_pattern(str, from, pattern)
   local b,e = string.find(str, pattern[2], from)
   if b == from then
     return e + 1
@@ -69,7 +69,7 @@ function aux.maybe(str, from, pattern)
   return from
 end
 
-function aux.maybePattern(str, from, pattern)
+function aux.maybe_pattern(str, from, pattern)
   local b,e = string.find(str, pattern[2], from)
   if b == from then
     return e + 1
