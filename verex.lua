@@ -77,4 +77,39 @@ function aux.maybePattern(str, from, pattern)
   return from
 end
 
+function aux.is_substring(str, from, pattern)
+  for i = 1, #pattern[2] do
+    if not aux.compare_bytes(str, i+from-1, pattern[2], i) then
+      return
+    end
+  end
+  return from + #pattern[2]
+end
+
+function aux.is_substring_ci(str, from, pattern)
+  local patt = pattern[2]
+  for i = 1, #patt do
+    if not aux.compare_bytes_ci(str, i+from-1, pattern[2], i) then
+      return
+    end
+  end
+  return from + #patt
+end
+
+function aux.compare_bytes(a,i,b,j)
+  return string.byte(a,i) == string.byte(b,j)
+end
+
+function aux.compare_bytes_ci(a,i,b,j)
+  return aux.byte_to_lower(string.byte(a,i))
+      == aux.byte_to_lower(string.byte(b,j))
+end
+
+function aux.byte_to_lower(byte)
+  if byte >=65 and byte <= 90 then
+    return byte + 32
+  end
+  return byte
+end
+
 return mod
