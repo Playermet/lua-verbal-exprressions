@@ -25,21 +25,25 @@ end
 
 
 function mod:find(str)
+  if self == mod then self = mod:new() end
   self:add(aux.find, str)
   return self
 end
 
 function mod:find_pattern(str)
+  if self == mod then self = mod:new() end
   self:add(aux.find_pattern, str)
   return self
 end
 
 function mod:maybe(str)
+  if self == mod then self = mod:new() end
   self:add(aux.maybe, str)
   return self
 end
 
 function mod:maybe_pattern(str)
+  if self == mod then self = mod:new() end
   self:add(aux.maybe_pattern, str)
   return self
 end
